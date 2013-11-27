@@ -44,7 +44,7 @@ class TokenTest extends PHPUnit_Framework_TestCase
 
         $token->expects($this->once())
             ->method('writeToLogEntries')
-            ->will($this->returnCallback(function ($value) use ($leToken) {
+            ->will($this->returnCallback(function ($value) use ($leToken, &$this) {
                 $this->assertRegExp('/' . $leToken . ' .* - WARN - Test/', $value);
             }));
 
@@ -63,7 +63,7 @@ class TokenTest extends PHPUnit_Framework_TestCase
 
         $token->expects($this->once())
             ->method('writeToLogEntries')
-            ->will($this->returnCallback(function ($value) use ($leToken) {
+            ->will($this->returnCallback(function ($value) use ($leToken, &$this) {
                 $this->assertRegExp('/' . $leToken . ' .* - WARN - Test/', $value);
             }));
 
@@ -82,7 +82,7 @@ class TokenTest extends PHPUnit_Framework_TestCase
 
         $token->expects($this->once())
             ->method('writeToLogEntries')
-            ->will($this->returnCallback(function ($value) use ($leToken) {
+            ->will($this->returnCallback(function ($value) use ($leToken, &$this) {
                 $this->assertRegExp('/' . $leToken . ' .* - WARN - Test/', $value);
             }));
 
@@ -101,7 +101,7 @@ class TokenTest extends PHPUnit_Framework_TestCase
 
         $token->expects($this->once())
             ->method('writeToLogEntries')
-            ->will($this->returnCallback(function ($value) use ($leToken) {
+            ->will($this->returnCallback(function ($value) use ($leToken, &$this) {
                 $this->assertRegExp('/' . $leToken . ' .* - WARN - Test/', $value);
             }));
 
