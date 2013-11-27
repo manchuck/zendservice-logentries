@@ -106,23 +106,17 @@ class Token extends AbstractWriter
         $address = $this->useTLS ? self::LOG_ENTRIES_TLS_ADDRESS : self::LOG_ENTRIES_ADDRESS;
 
         if ($this->persistent) {
-            $resource = $this->openPersistentConnection($address, $port);
+            $this->resource = $this->openPersistentConnection($address, $port);
         } else {
-            $resource = $this->openConnection($address, $port);
+            $this->resource = $this->openConnection($address, $port);
         }
-
-        // @codeCoverageIgnoreStart
-        if (is_resource($resource) && !feof($resource)) {
-            $this->resource = $resource;
-        }
-        // @codeCoverageIgnoreEnd
     }
 
     /**
      * @param string $address
      * @param int $port
      * @return resource
-     * @cordCoverageIgnore
+     * @codeCoverageIgnore
      */
     protected function openConnection($address, $port)
     {
