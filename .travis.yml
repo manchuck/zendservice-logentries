@@ -12,7 +12,7 @@ before_install:
  - composer install --dev --prefer-source
 
 script:
- - php ./tests/run-tests.php
+ - (cd test ; phpunit -c phpunit.xml)
 
 notifications:
  email:
