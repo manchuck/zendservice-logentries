@@ -11,7 +11,7 @@ before_install:
  - composer install --prefer-source
 
 script:
- - (cd test ; phpunit -c phpunit.xml.dist)
+ - (cd tests; phpunit -c phpunit.xml.dist)
 
 notifications:
  email:
