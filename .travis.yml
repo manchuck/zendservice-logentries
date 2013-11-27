@@ -8,11 +8,10 @@ php:
  
 before_install:
  - cp tests/TestConfiguration.php.travis tests/TestConfiguration.php
- - cp tests/phpunit.xml.dist tests/phpunit.xml
  - composer install --prefer-source
 
 script:
- - (cd test ; phpunit -c phpunit.xml)
+ - (cd test ; phpunit -c phpunit.xml.dist)
 
 notifications:
  email:
