@@ -96,9 +96,11 @@ class Token extends AbstractWriter
 
     protected function connect()
     {
+        // @codeCoverageIgnoreStart
         if ($this->isConnected()) {
             return;
         }
+        // @codeCoverageIgnoreEnd
 
         $port    = $this->useTLS ? self::LOG_ENTRIES_TLS_PORT : self::LOG_ENTRIES_PORT;
         $address = $this->useTLS ? self::LOG_ENTRIES_TLS_ADDRESS : self::LOG_ENTRIES_ADDRESS;
@@ -109,9 +111,11 @@ class Token extends AbstractWriter
             $resource = $this->openConnection($address, $port);
         }
 
+        // @codeCoverageIgnoreStart
         if (is_resource($resource) && !feof($resource)) {
             $this->resource = $resource;
         }
+        // @codeCoverageIgnoreEnd
     }
 
     /**
@@ -138,6 +142,7 @@ class Token extends AbstractWriter
 
     /**
      * @param $line
+     * @codeCoverageIgnore
      */
     protected function writeToLogEntries($line)
     {
@@ -149,6 +154,7 @@ class Token extends AbstractWriter
     /**
      * @param string|\Zend\Log\Formatter\FormatterInterface $formatter
      * @return $this|AbstractWriter
+     * @codeCoverageIgnore
      */
     public function setFormatter($formatter)
     {

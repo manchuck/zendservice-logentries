@@ -11,6 +11,7 @@ namespace ZendServiceTest\LogEntries\Writer;
 
 use \PHPUnit_Framework_TestCase;
 use Zend\Log\Logger;
+use ZendService\LogEntries\Exception\RuntimeException;
 use ZendService\LogEntries\Writer\Token;
 
 /**
@@ -50,6 +51,7 @@ class TokenTest extends PHPUnit_Framework_TestCase
             }));
 
 
+        $this->assertFalse($token->isConnected());
         $logger = new Logger();
         $logger->addWriter($token);
         $logger->warn('Test');
@@ -72,7 +74,7 @@ class TokenTest extends PHPUnit_Framework_TestCase
                 $testValue = $value;
             }));
 
-
+        $this->assertFalse($token->isConnected());
         $logger = new Logger();
         $logger->addWriter($token);
         $logger->warn('Test');
@@ -95,6 +97,7 @@ class TokenTest extends PHPUnit_Framework_TestCase
                 $testValue = $value;
             }));
 
+        $this->assertFalse($token->isConnected());
         $logger = new Logger();
         $logger->addWriter($token);
         $logger->warn('Test');
@@ -117,10 +120,23 @@ class TokenTest extends PHPUnit_Framework_TestCase
                 $testValue = $value;
             }));
 
+        $this->assertFalse($token->isConnected());
         $logger = new Logger();
         $logger->addWriter($token);
         $logger->warn('Test');
 
         $this->assertRegExp('/' . $leToken . ' .* - WARN - Test/', $testValue);
+    }
+
+    public function testExceptionThrownWithEmptyToken()
+    {
+        try {
+            $token = new Token('');
+        } catch (RuntimeException $exception) {
+            $this->assertSame('You cannot set a token writer with an empty token', $exception->getMessage());
+            return;
+        }
+
+        $this->fail('Exception not thrown');
     }
 }
