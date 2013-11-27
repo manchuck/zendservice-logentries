@@ -8,6 +8,7 @@ php:
  
 before_install:
  - cp tests/TestConfiguration.php.travis tests/TestConfiguration.php
+ - cp tests/phpunit.xml.dist tests/phpunit.xml
  - composer install --prefer-source
 
 script:
