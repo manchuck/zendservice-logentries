@@ -42,15 +42,19 @@ class TokenTest extends PHPUnit_Framework_TestCase
             ->method('openConnection')
             ->with(Token::LOG_ENTRIES_ADDRESS, Token::LOG_ENTRIES_PORT);
 
+        $testValue = null;
         $token->expects($this->once())
             ->method('writeToLogEntries')
-            ->will($this->returnCallback(function ($value) use ($leToken, &$this) {
-                $this->assertRegExp('/' . $leToken . ' .* - WARN - Test/', $value);
+            ->will($this->returnCallback(function ($value) use ($leToken, &$testValue) {
+                $testValue = $value;
             }));
+
 
         $logger = new Logger();
         $logger->addWriter($token);
         $logger->warn('Test');
+
+        $this->assertRegExp('/' . $leToken . ' .* - WARN - Test/', $testValue);
     }
 
     public function testLogsWarningWithPersistentTCPConnection()
@@ -61,15 +65,19 @@ class TokenTest extends PHPUnit_Framework_TestCase
             ->method('openPersistentConnection')
             ->with(Token::LOG_ENTRIES_ADDRESS, Token::LOG_ENTRIES_PORT);
 
+        $testValue = null;
         $token->expects($this->once())
             ->method('writeToLogEntries')
-            ->will($this->returnCallback(function ($value) use ($leToken, &$this) {
-                $this->assertRegExp('/' . $leToken . ' .* - WARN - Test/', $value);
+            ->will($this->returnCallback(function ($value) use ($leToken, &$testValue) {
+                $testValue = $value;
             }));
+
 
         $logger = new Logger();
         $logger->addWriter($token);
         $logger->warn('Test');
+
+        $this->assertRegExp('/' . $leToken . ' .* - WARN - Test/', $testValue);
     }
 
     public function testLogsWarningWithNonPersistentTLSConnection()
@@ -80,15 +88,18 @@ class TokenTest extends PHPUnit_Framework_TestCase
             ->method('openConnection')
             ->with(Token::LOG_ENTRIES_TLS_ADDRESS, Token::LOG_ENTRIES_TLS_PORT);
 
+        $testValue = null;
         $token->expects($this->once())
             ->method('writeToLogEntries')
-            ->will($this->returnCallback(function ($value) use ($leToken, &$this) {
-                $this->assertRegExp('/' . $leToken . ' .* - WARN - Test/', $value);
+            ->will($this->returnCallback(function ($value) use ($leToken, &$testValue) {
+                $testValue = $value;
             }));
 
         $logger = new Logger();
         $logger->addWriter($token);
         $logger->warn('Test');
+
+        $this->assertRegExp('/' . $leToken . ' .* - WARN - Test/', $testValue);
     }
 
     public function testLogsWarningWithPersistentTLSConnection()
@@ -99,14 +110,17 @@ class TokenTest extends PHPUnit_Framework_TestCase
             ->method('openPersistentConnection')
             ->with(Token::LOG_ENTRIES_TLS_ADDRESS, Token::LOG_ENTRIES_TLS_PORT);
 
+        $testValue = null;
         $token->expects($this->once())
             ->method('writeToLogEntries')
-            ->will($this->returnCallback(function ($value) use ($leToken, &$this) {
-                $this->assertRegExp('/' . $leToken . ' .* - WARN - Test/', $value);
+            ->will($this->returnCallback(function ($value) use ($leToken, &$testValue) {
+                $testValue = $value;
             }));
 
         $logger = new Logger();
         $logger->addWriter($token);
         $logger->warn('Test');
+
+        $this->assertRegExp('/' . $leToken . ' .* - WARN - Test/', $testValue);
     }
 }
