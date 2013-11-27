@@ -37,7 +37,7 @@ class TokenTest extends PHPUnit_Framework_TestCase
     public function testLogsWarningWithNonPersistentTCPConnection()
     {
         $leToken = uniqid();
-        $token = $this->getTokenMock([$leToken, false, false]);
+        $token = $this->getTokenMock(array($leToken, false, false));
         $token->expects($this->once())
             ->method('openConnection')
             ->with(Token::LOG_ENTRIES_ADDRESS, Token::LOG_ENTRIES_PORT);
@@ -56,7 +56,7 @@ class TokenTest extends PHPUnit_Framework_TestCase
     public function testLogsWarningWithPersistentTCPConnection()
     {
         $leToken = uniqid();
-        $token = $this->getTokenMock([$leToken, false]);
+        $token = $this->getTokenMock(array($leToken, false));
         $token->expects($this->once())
             ->method('openPersistentConnection')
             ->with(Token::LOG_ENTRIES_ADDRESS, Token::LOG_ENTRIES_PORT);
@@ -75,7 +75,7 @@ class TokenTest extends PHPUnit_Framework_TestCase
     public function testLogsWarningWithNonPersistentTLSConnection()
     {
         $leToken = uniqid();
-        $token = $this->getTokenMock([$leToken, true, false]);
+        $token = $this->getTokenMock(array($leToken, true, false));
         $token->expects($this->once())
             ->method('openConnection')
             ->with(Token::LOG_ENTRIES_TLS_ADDRESS, Token::LOG_ENTRIES_TLS_PORT);
@@ -94,7 +94,7 @@ class TokenTest extends PHPUnit_Framework_TestCase
     public function testLogsWarningWithPersistentTLSConnection()
     {
         $leToken = uniqid();
-        $token = $this->getTokenMock([$leToken, true]);
+        $token = $this->getTokenMock(array($leToken, true));
         $token->expects($this->once())
             ->method('openPersistentConnection')
             ->with(Token::LOG_ENTRIES_TLS_ADDRESS, Token::LOG_ENTRIES_TLS_PORT);
