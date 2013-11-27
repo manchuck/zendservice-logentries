@@ -1,0 +1,45 @@
+{
+    "name": "zendframework/zendservice-github",
+    "description": "ZF2 Logger for Log Entries",
+    "type": "library",
+    "keywords": [
+        "zf2",
+        "log",
+        "LogEntries"
+    ],
+    "authors": [
+        {
+            "name": "Chuck 'MANCHUCK' Reeves",
+            "email": "chuck@manchuck.com",
+            "homepage": "http://www.manchuck.com",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "email": "chuck@manchuck.com"
+    }, 
+    "homepage": "http://packages.zendframework.com/",
+    "license": "BSD-3-Clause",
+    "autoload": {
+        "psr-0": {
+            "ZendService": "library/"
+        }
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "http://packages.zendframework.com/"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3",
+        "zendframework/zend-stdlib": ">=2.0.0",
+        "zendframework/zend-http": ">=2.0.0",
+        "zendframework/zend-json": ">=2.0.0",
+        "zendframework/zend-log": ">=2.0.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "*",
+        "satooshi/php-coveralls": "dev-master"
+    }
+}
