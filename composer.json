@@ -1,5 +1,5 @@
 {
-    "name": "zendframework/zendservice-github",
+    "name": "zendframework/zendservice-logentries",
     "description": "ZF2 Logger for Log Entries",
     "type": "library",
     "keywords": [
